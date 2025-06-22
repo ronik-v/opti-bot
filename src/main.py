@@ -7,7 +7,7 @@ from src.core.data import OptionsStockService
 async def main() -> None:
     async with get_exchange_client() as client:
         opt_service = OptionsStockService(client)
-        opt_list = await opt_service.load_list()
+        opt_list = await opt_service.load_options_list()
         print(f"RESULT({type(opt_list)}) = {opt_list}, \nRESULT{({type(opt_list)})} - {type(opt_list[0])})")
 
 

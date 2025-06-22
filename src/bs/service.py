@@ -1,6 +1,7 @@
 from typing import override
 from logging import getLogger
 
+from tinkoff.invest import Option
 from tinkoff.invest.async_services import AsyncServices
 
 from src.bs.abstract import BsServiceAbstract, OptionStockData, ModelCallResult
@@ -24,4 +25,8 @@ class BsService(BsServiceAbstract):
 
     @override
     async def options_and_stocks_data(self) -> OptionStockData:
-        """TODO"""
+        """Options and close prices stock data"""
+        options: list[Option] = await self.data.load_options_list()
+        stock_prices: dict[str, list[float]] = await self.data.load_stock_prices(
+            [option.basic_asset for option in options]
+        )

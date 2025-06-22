@@ -4,9 +4,8 @@ from tinkoff.invest import Option
 from src.core.types import TradeSignal
 
 type StockVolatile = float
-type StockFigi = str
 type OptionUID = str
-type OptionStockData = dict[StockFigi, tuple[list[Option]], StockVolatile]
+type OptionStockData = dict[OptionUID, tuple[list[Option]], StockVolatile]
 type ModelCallResult = dict[OptionUID, TradeSignal]
 
 

@@ -1,6 +1,19 @@
 from math import log, sqrt, exp, erf
 
 
+def stock_volatile(close_prices: list[float]) -> float:
+    log_income: list[float] = [
+        log(close_prices[day_index] / close_prices[day_index - 1])
+        for day_index in range(1, len(close_prices))
+    ]
+    log_len: int = len(log_income)
+    log_income_mean: float = sum(log_income) / log_len
+
+    return sqrt(
+        (1 / (log_len - 1)) * sum([(log_income_val - log_income_mean) ** 2 for log_income_val in log_income])
+    )
+
+
 class OptionCallPriceModel:
     """Bs model for europe CALL option"""
 
