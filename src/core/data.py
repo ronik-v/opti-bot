@@ -3,7 +3,7 @@ from tinkoff.invest.async_services import AsyncServices
 from tinkoff.invest import InstrumentStatus, OptionDirection, Option, OptionStyle
 
 
-class OptionsService:
+class OptionsStockService:
     def __init__(self, client: AsyncServices):
         self.client = client
         self.logger = getLogger(__name__)
